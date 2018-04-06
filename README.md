@@ -1,4 +1,4 @@
-# basicTrendline: an R package for adding trendline of basic regression models to plot
+# basicANCOVA: an R package for One-way ANCOVA Judgement and Plot
 
 
 
