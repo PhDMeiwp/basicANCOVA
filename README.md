@@ -30,14 +30,14 @@
 	
 
     library(basicANCOVA)
-    data("hotdog",package = "basicANCOVA")
-    View(hotdog)
+    data("isotope",package = "basicANCOVA")
+    View(isotope)
     #rename
-    groups<-hotdog$Type
-    x<-hotdog$Sodium
-    y<-hotdog$Calories
-    data<-hotdog
+    groups<-isotope$area
+    x<-isotope$d13C
+    y<-isotope$d15N
+    data<-isotope
     
-    ancovaplot(x,y,groups,data,xlab="xexample",ylab="yvalues")
+    ancovaplot(x,y,groups,data)
 
- <img src="docs/images/example.png" width="490"/>
+ <img src="docs/images/Fig.slope1.png" width="490"/>
