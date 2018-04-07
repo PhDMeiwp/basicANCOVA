@@ -1,6 +1,6 @@
 # basicANCOVA: an R package for One-way ANCOVA Judgement and Plot
 
-
+[![HitCount](http://hits.dwyl.io/PhDMeiwp/basicANCOVA.svg)](http://hits.dwyl.io/PhDMeiwp/basicANCOVA)
 
 ## Installation (1.0.1)
 

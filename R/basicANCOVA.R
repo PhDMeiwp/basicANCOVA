@@ -6,17 +6,17 @@
 #' @export
 #' 
 #' @examples
-#' library(basicTrendline)
-#' data("hotdog",package = "HH")
-#' View(hotdog)
-#' ancovaplot(x=hotdog$Sodium,y=hotdog$Calories,groups=hotdog$Type,data=hotdog)
+#' library(basicANCOVA)
+#' data("isotope",package = "basicANCOVA")
+#' View(isotope)
+#' ANCOVAplot(x=isotope$d13C,y=isotope$d15N,groups=isotope$area,data=isotope)
 
-ancovaplot<-
+ANCOVAplot<-
   function(x, y, groups,data, 
-           col=1:length(levels(groups)),
-           pch=1:length(levels(groups)),
+           col=1:length(levels(factor(groups))),
+           pch=1:length(levels(factor(groups))),
            Fig.slope=1,
-           lty=1:length(levels(groups)),
+           lty=1:length(levels(factor(groups))),
            legendPos="topleft",
            ...)
 {
@@ -28,14 +28,22 @@ ancovaplot<-
     
     require(car)
     Anova(mod.IA,type=3)->aov.mod.IA
+    
+    # print
+    cat("\n >>>> Result 0 Judgement! To determine if the dataset is suitable for running One-way ANCOVA.\n")
+    print(aov.mod.IA) 
+    
     if (aov.mod.IA[2,4]>0.05){
-      print(aov.mod.IA) &
-      stop("covariate x is NOT significantly related with y (P > 0.05), ANCOVA cannot access!")
+    stop("Because covariate x is NOT significantly correlated with y (P-value > 0.05), ANCOVA cannot proceed!")
       }
     if (aov.mod.IA[4,4]<0.05){
-      print(aov.mod.IA) &
-      stop("interation of x*groups IS significant (P < 0.05), ANCOVA cannot access!")
-      }
+      stop("Because interation of x*groups IS significant (P-value < 0.05), ANCOVA cannot proceed!")
+    }
+    
+    if (aov.mod.IA[2,4]<0.05 & aov.mod.IA[4,4]>0.05){
+      cat("\n \n \n >>>> ANCOVA can be continued!\n")
+      
+    }
     
     ############## mod.NIA
     # Step2: then ANCOVA¡¡NonInterAction, for equal slope, type III
@@ -55,7 +63,6 @@ ancovaplot<-
 
     Estimate <- aov.mod.NIA.tc$coefficients[,1] # Estimate conclude both all intercepts values and one common slope value.
     slope <- unname(Estimate[2])
-    slope <-  rep(slope, length=length(levels(grp)))
 
     Estimate.intercept<-Estimate[-2]    # Estimate conclude all intercepts values only!
     Estimate.intercept<-unname(Estimate.intercept)
@@ -63,29 +70,29 @@ ancovaplot<-
       {
       Estimate.intercept[i]<-Estimate.intercept[1]+Estimate.intercept[i]
     }
-    
-    j=1:length(Estimate.intercept)
-    Estimate.intercept[j]<-Estimate.intercept[j]
-    intercept <-  rep(Estimate.intercept[j], length=length(levels(grp)))  
 
-    
-    
+    # print
+    cat("\n \n \n >>>> Result 1 of One-way ANCOVA with common slope and different intercepts. While the output of 'Coefficients$Intercept' value in the first row indicates the 'common intercept' of all groups.\n")
     print(aov.mod.NIA)
+    
+    cat("\n \n \n >>>> Result 2 of One-way ANCOVA with common slope and different intercepts. while the output of 'Coefficients$Intercept' value in the first row indicates the 'specific intercept' of grp1.\n")
     print(aov.mod.NIA.tc)
         
     ####################
     # Step4: Graphics
-
-    plot(y~x, col = col, pch = pch, ...)
-
-  if (Fig.slope==1)  #Figure for same slope value with different intercepts values
+    
+    
+  if (Fig.slope==1)  #ANCOVA figure for same slope value with different intercepts.
     {
-      for (k in 1:length(intercept))
-      {abline(a=intercept[k],b=slope,col=col[k],lty=lty[k])
+      for (k in 1:length(levels(factor(groups))))
+      {
+        plot(y~x, main="Common slope with different intercepts",col = col[grp], pch = pch[grp], ...)
+        abline(a=Estimate.intercept[k],b=slope,col=col[k],lty=lty[k])
         }
     } 
-    
-    legend(legendPos,legend = (levels(groups)),col=col,lty=lty,pch=pch)    
+   
+
+  legend(legendPos,legend = (levels(grp)),col=col,lty=lty,pch=pch)    
 
     #£¨Î´Íê´ýÐø...Fig.slope=2 # different slopes and intercepts£©
 } 
