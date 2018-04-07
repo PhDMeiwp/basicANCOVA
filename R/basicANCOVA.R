@@ -15,8 +15,8 @@ ANCOVAplot<-
   function(x, y, groups,data, 
            col=1:length(levels(factor(groups))),
            pch=1:length(levels(factor(groups))),
-           Fig.slope=1,
            lty=1:length(levels(factor(groups))),
+           Fig.slope=1,
            legendPos="topleft",
            ...)
 {
@@ -81,12 +81,12 @@ ANCOVAplot<-
     ####################
     # Step4: Graphics
     
-    
+  plot(y~x, col = col[grp], pch = pch[grp], ...)
+
   if (Fig.slope==1)  #ANCOVA figure for same slope value with different intercepts.
     {
       for (k in 1:length(levels(factor(groups))))
       {
-        plot(y~x, main="Common slope with different intercepts",col = col[grp], pch = pch[grp], ...)
         abline(a=Estimate.intercept[k],b=slope,col=col[k],lty=lty[k])
         }
     } 
