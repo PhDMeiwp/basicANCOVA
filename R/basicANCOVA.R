@@ -22,31 +22,31 @@ ANCOVAplot<-
 {
     grp<- factor(groups)
   
-    ############## Judgement, mod.IA
-    # Step1: ANCOVA with InterAction
+############## Judgement, mod.IA
     mod.IA<-aov(y~x*grp,data=data,  contrasts=list(grp=contr.sum))
     
     require(car)
     Anova(mod.IA,type=3)->aov.mod.IA
     
-    # print
+# print
     cat("\n >>>> Result 0 Judgement! To determine if the dataset is suitable for running One-way ANCOVA.\n")
-    print(aov.mod.IA) 
+    Result0<-aov.mod.IA
+    print(Result0) 
     
     if (aov.mod.IA[2,4]>0.05){
     stop("Because covariate x is NOT significantly correlated with y (P-value > 0.05), ANCOVA cannot proceed!")
       }
+	  
     if (aov.mod.IA[4,4]<0.05){
       stop("Because interation of x*groups IS significant (P-value < 0.05), ANCOVA cannot proceed!")
     }
     
     if (aov.mod.IA[2,4]<0.05 & aov.mod.IA[4,4]>0.05){
       cat("\n \n \n >>>> ANCOVA can be continued!\n")
-      
-    }
+     }
     
-    ############## mod.NIA
-    # Step2: then ANCOVA¡¡NonInterAction, for equal slope, type III
+############## mod.NIA
+
     mod.NIA<-aov(y~x+grp,data=data,contrasts = list(grp=contr.sum))
     Anova(mod.NIA, type=3)
     
@@ -55,8 +55,8 @@ ANCOVAplot<-
     commonSlope<-aov.mod.NIA$coefficients[2,1]
     commonIntercept<-aov.mod.NIA$coefficients[1,1]
     
-    ############## mod.NIA.tc
-    # Step3: then ANCOVA NonInterAction with treatment contrasts, or type I.
+############## mod.NIA.tc
+
     mod.NIA.tc<-aov(y~x+grp,data=data,contrasts = list(grp=contr.treatment))
     
     summary.lm(mod.NIA.tc)->aov.mod.NIA.tc
@@ -71,28 +71,32 @@ ANCOVAplot<-
       Estimate.intercept[i]<-Estimate.intercept[1]+Estimate.intercept[i]
     }
 
-    # print
+# print
     cat("\n \n \n >>>> Result 1 of One-way ANCOVA with common slope and different intercepts. While the output of 'Coefficients$Intercept' value in the first row indicates the 'common intercept' of all groups.\n")
-    print(aov.mod.NIA)
+    Result1<-aov.mod.NIA
+    print(Result1)
     
     cat("\n \n \n >>>> Result 2 of One-way ANCOVA with common slope and different intercepts. while the output of 'Coefficients$Intercept' value in the first row indicates the 'specific intercept' of grp1.\n")
-    print(aov.mod.NIA.tc)
+    Result2<-aov.mod.NIA.tc
+    print(Result2)
         
-    ####################
-    # Step4: Graphics
+####################
+# Step4: Graphics
     
   plot(y~x, col = col[grp], pch = pch[grp], ...)
-
+     
   if (Fig.slope==1)  #ANCOVA figure for same slope value with different intercepts.
     {
       for (k in 1:length(levels(factor(groups))))
       {
-        abline(a=Estimate.intercept[k],b=slope,col=col[k],lty=lty[k])
+       abline(a=Estimate.intercept[k],b=slope,col=col[k],lty=lty[k])
         }
     } 
+ 
    
 
   legend(legendPos,legend = (levels(grp)),col=col,lty=lty,pch=pch)    
 
-    #£¨Î´Íê´ýÐø...Fig.slope=2 # different slopes and intercepts£©
+  invisible(list(Result0 = Result0, Result1 = Result1, Result2 = Result2))
+  
 } 
