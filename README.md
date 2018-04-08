@@ -17,7 +17,7 @@
 
 ## Usage
 
-    ancovaplot(x, y, groups,data, 
+    ANCOVAplot(x, y, groups,data, 
        			col=1:length(levels(groups)),
        			pch=1:length(levels(groups)),
        			lty=1:length(levels(groups)),
@@ -37,6 +37,6 @@
     y<-isotope$d15N
     data<-isotope
     
-    ancovaplot(x,y,groups,data)
+    ANCOVAplot(x,y,groups,data)
 
  <img src="docs/images/Fig.slope1.png" width="490"/>

@@ -91,18 +91,21 @@ ANCOVAplot<-
     print(Result2)
 
 ################ Result 3
-
+    
+    j = 1:length(levels(group))
+    grp=paste("group",j,sep = "")
+    
     Input.name=deparse(substitute(groups))
-    data2<-cbind(1:length(levels(group)),levels(group))
+    data2<-cbind(grp,levels(group))
     colnames(data2)<-c("group",Input.name)
     data2
-
+    
     Result3<-list(common.Slope=commonSlope,common.Intercept=commonIntercept,specific.Intercepts=Estimate.intercept,group.names=data2)
-
+    
     # print
     cat("\n \n \n <<<< Result 3 of One-way ANCOVA which output specific values.>>>>\n \n")
     print(Result3)
-
+    
 #################### Graphics, ANCOVA figure for same slope with different intercepts.
 
     plot(y~x, col = col[group], pch = pch[group], ...)
