@@ -20,7 +20,6 @@
     ancovaplot(x, y, groups,data, 
        			col=1:length(levels(groups)),
        			pch=1:length(levels(groups)),
-       			Fig.slope=1,
        			lty=1:length(levels(groups)),
        			legendPos="topleft",
        			...)

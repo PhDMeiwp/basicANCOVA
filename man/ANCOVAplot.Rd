@@ -6,8 +6,18 @@
 \usage{
 ANCOVAplot(x, y, groups, data, col = 1:length(levels(factor(groups))),
   pch = 1:length(levels(factor(groups))),
-  lty = 1:length(levels(factor(groups))), Fig.slope = 1,
-  legendPos = "topleft", ...)
+  lty = 1:length(levels(factor(groups))), legendPos = "topleft", ...)
+}
+\arguments{
+\item{x, y, groups}{For covariate 'x', dependent 'y' and factor 'groups'.}
+
+\item{data}{The dataset contains three columns (x,y,groups) data. See an example via data("isotope",package = "basicANCOVA").}
+
+\item{col, pch, lty}{The color, pch and linetype for plot.}
+
+\item{legendPos}{The position of legend, such as one of c("none","bottomright","bottom","bottomleft","left","topleft","top","topright","right","center").}
+
+\item{...}{additional parameters to \code{\link[graphics]{plot}},such as main, sub, xlab, ylab.}
 }
 \description{
 One-way ANCOVA Judgement and Plot
@@ -17,4 +27,7 @@ library(basicANCOVA)
 data("isotope",package = "basicANCOVA")
 View(isotope)
 ANCOVAplot(x=isotope$d13C,y=isotope$d15N,groups=isotope$area,data=isotope)
+
+ @author Weiping Mei
+ @seealso  \\code{\\link[basicTrendline]{trendline}}
 }
