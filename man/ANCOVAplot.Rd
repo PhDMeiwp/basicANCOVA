@@ -23,11 +23,16 @@ ANCOVAplot(x, y, groups, data, col = 1:length(levels(factor(groups))),
 One-way ANCOVA Judgement and Plot
 }
 \examples{
+
 library(basicANCOVA)
 data("isotope",package = "basicANCOVA")
 View(isotope)
 ANCOVAplot(x=isotope$d13C,y=isotope$d15N,groups=isotope$area,data=isotope)
 
- @author Weiping Mei
- @seealso  \\code{\\link[basicTrendline]{trendline}}
+}
+\seealso{
+\code{\link[basicTrendline]{trendline}}
+}
+\author{
+Weiping Mei
 }

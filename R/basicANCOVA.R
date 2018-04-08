@@ -12,13 +12,15 @@
 #' @export
 #'
 #' @examples
+#'
 #' library(basicANCOVA)
 #' data("isotope",package = "basicANCOVA")
 #' View(isotope)
 #' ANCOVAplot(x=isotope$d13C,y=isotope$d15N,groups=isotope$area,data=isotope)
 #'
-#'  @author Weiping Mei
-#'  @seealso  \code{\link[basicTrendline]{trendline}}
+#' @author  Weiping Mei
+#' @seealso \code{\link[basicTrendline]{trendline}}
+
 
 ANCOVAplot<-
   function(x, y, groups,data,
