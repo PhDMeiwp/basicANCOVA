@@ -6,7 +6,8 @@
 \usage{
 ANCOVAplot(x, y, groups, data, col = 1:length(levels(factor(groups))),
   pch = 1:length(levels(factor(groups))),
-  lty = 1:length(levels(factor(groups))), legendPos = "topleft", ...)
+  lty = 1:length(levels(factor(groups))), Fig.slope = 1,
+  legendPos = "topleft", ...)
 }
 \arguments{
 \item{x, y, groups}{For covariate 'x', dependent 'y' and factor 'groups'.}
@@ -14,6 +15,8 @@ ANCOVAplot(x, y, groups, data, col = 1:length(levels(factor(groups))),
 \item{data}{The dataset contains three columns (x,y,groups) data. See an example via data("isotope",package = "basicANCOVA").}
 
 \item{col, pch, lty}{The color, pch and linetype for plot.}
+
+\item{Fig.slope}{If 'Fig.slope = 1', draw graph and output the result of 'ANCOVA with same slope'; \n Whereas 'Fig.slope = 0', draw graph and output result of 'linear regression line' for each group.}
 
 \item{legendPos}{The position of legend, such as one of c("none","bottomright","bottom","bottomleft","left","topleft","top","topright","right","center").}
 
@@ -27,7 +30,14 @@ One-way ANCOVA Judgement and Plot
 library(basicANCOVA)
 data("isotope",package = "basicANCOVA")
 View(isotope)
-ANCOVAplot(x=isotope$d13C,y=isotope$d15N,groups=isotope$area,data=isotope)
+
+ANCOVAplot(x=isotope$d13C, y=isotope$d15N, groups=isotope$area,
+           data=isotope, Fig.slope = 1) # (same slope) output ANCOVA results and graphic
+
+# Not run
+ANCOVAplot(x=isotope$d13C, y=isotope$d15N, groups=isotope$area,
+           data=isotope, Fig.slope = 0) # (different slopes) output "linear regression" results of each group and graphic
+# End (Not run)
 
 }
 \seealso{

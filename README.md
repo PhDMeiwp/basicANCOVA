@@ -2,12 +2,8 @@
 
 [![HitCount](http://hits.dwyl.io/PhDMeiwp/basicANCOVA.svg)](http://hits.dwyl.io/PhDMeiwp/basicANCOVA)
 
-## Installation (1.0.1)
+## Installation (1.0.2)
 
-**version 1.0.1** from Github
-
-    ### version 1.0.1
-	
 	install.packages("devtools")
 	library(devtools)   
 	install_github("PhDMeiwp/basicANCOVA@master", force = TRUE)
@@ -18,10 +14,11 @@
 ## Usage
 
     ANCOVAplot(x, y, groups,data, 
-       			col=1:length(levels(groups)),
-       			pch=1:length(levels(groups)),
-       			lty=1:length(levels(groups)),
-       			legendPos="topleft",
+       			col = 1:length(levels(groups)),
+       			pch = 1:length(levels(groups)),
+       			lty = 1:length(levels(groups)),
+				Fig.slope = 1,
+       			legendPos = "topleft",
        			...)
 
 
@@ -37,6 +34,14 @@
     y<-isotope$d15N
     data<-isotope
     
-    ANCOVAplot(x,y,groups,data)
+    ANCOVAplot(x, y, groups, data, Fig.slope = 1) # same slope (ANCOVA results).
+	
+	ANCOVAplot(x, y, groups, data, Fig.slope = 0) # different slopes (linear regression results).
 
  <img src="docs/images/Fig.slope1.png" width="490"/>
+  
+ <img src="docs/images/Fig.slope0.png" width="490"/>
+ 
+ # Contributors
+ 
+ - R Codes to draw graph with different slopes mainly cite from [library(HH)](https://github.com/cran/HH/blob/master/R/ancovaplot.R#subset=(cc==cci)).

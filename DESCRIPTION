@@ -1,6 +1,6 @@
 Package: basicANCOVA
 Title: Basic One-way ANCOVA Judgement and Plot
-Version: 1.0.1
+Version: 1.0.2
 Author: Weiping Mei [aut, cre]
 Maintainer: Weiping Mei <meiweipingg@163.com>
 Description: Perform one-way ANCOVA.
