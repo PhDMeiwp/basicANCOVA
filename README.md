@@ -35,12 +35,13 @@
     data<-isotope
     
     ANCOVAplot(x, y, groups, data, Fig.slope = 1) # same slope (ANCOVA results).
-	
-	ANCOVAplot(x, y, groups, data, Fig.slope = 0) # different slopes (linear regression results).
 
- <img src="docs/images/Fig.slope1.png" width="490"/>
-  
- <img src="docs/images/Fig.slope0.png" width="490"/>
+
+ <img src="docs/images/Fig.slope1.png" width="490" align= center/>
+	
+	ANCOVAplot(x, y, groups, data, Fig.slope = 0) # different slopes (linear regression results).  
+	
+ <img src="docs/images/Fig.slope0.png" width="490" align= center/>
  
  # Contributors
  
