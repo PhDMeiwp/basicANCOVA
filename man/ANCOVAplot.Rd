@@ -29,14 +29,13 @@ One-way ANCOVA Judgement and Plot
 
 library(basicANCOVA)
 data("isotope",package = "basicANCOVA")
-View(isotope)
 
-ANCOVAplot(x=isotope$d13C, y=isotope$d15N, groups=isotope$area,
-           data=isotope, Fig.slope = 1) # (same slope) output ANCOVA results and graphic
+# (same slope) output ANCOVA results and graphic
+ANCOVAplot(x=isotope$d13C, y=isotope$d15N, groups=isotope$area, data=isotope, Fig.slope = 1)
 
 # Not run
-ANCOVAplot(x=isotope$d13C, y=isotope$d15N, groups=isotope$area,
-           data=isotope, Fig.slope = 0) # (different slopes) output "linear regression" results of each group and graphic
+# # (different slopes) output "linear regression" results of each group and graphic
+ANCOVAplot(x=isotope$d13C, y=isotope$d15N, groups=isotope$area, data=isotope, Fig.slope = 0)
 # End (Not run)
 
 }

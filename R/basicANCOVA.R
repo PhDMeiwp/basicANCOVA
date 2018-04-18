@@ -16,14 +16,13 @@
 #'
 #' library(basicANCOVA)
 #' data("isotope",package = "basicANCOVA")
-#' View(isotope)
 #'
-#' ANCOVAplot(x=isotope$d13C, y=isotope$d15N, groups=isotope$area,
-#'            data=isotope, Fig.slope = 1) # (same slope) output ANCOVA results and graphic
+#' # (same slope) output ANCOVA results and graphic
+#' ANCOVAplot(x=isotope$d13C, y=isotope$d15N, groups=isotope$area, data=isotope, Fig.slope = 1)
 #'
 #' # Not run
-#' ANCOVAplot(x=isotope$d13C, y=isotope$d15N, groups=isotope$area,
-#'            data=isotope, Fig.slope = 0) # (different slopes) output "linear regression" results of each group and graphic
+#' # # (different slopes) output "linear regression" results of each group and graphic
+#' ANCOVAplot(x=isotope$d13C, y=isotope$d15N, groups=isotope$area, data=isotope, Fig.slope = 0)
 #' # End (Not run)
 #'
 #' @author  Weiping Mei
@@ -43,8 +42,9 @@ ANCOVAplot<-
 ############## Judgement, mod.IA
     mod.IA<-aov(y~x*group,data=data,  contrasts=list(group=contr.sum))
 
-    require(car)
-    Anova(mod.IA,type=3)->aov.mod.IA
+    if (requireNamespace("car", quietly = TRUE)){
+      car::Anova(mod.IA,type=3)->aov.mod.IA
+      }
 
 # print0
   if (Fig.slope ==1){
