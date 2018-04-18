@@ -1,9 +1,9 @@
 #' One-way ANCOVA Judgement and Plot
 
 #' @param x,y,groups For covariate 'x', dependent 'y' and factor 'groups'.
-#' @param data The dataset contains three columns (x,y,groups) data. See an example via data("isotope",package = "basicANCOVA").
+#' @param data The dataset contains three columns (x,y,groups) data. \cr See an example via data("isotope",package = "basicANCOVA").
 #' @param col,pch,lty The color, pch and linetype for plot.
-#' @param Fig.slope If 'Fig.slope = 1', draw graph and output the result of 'ANCOVA with same slope'; \n Whereas 'Fig.slope = 0', draw graph and output result of 'linear regression line' for each group.
+#' @param Fig.slope If 'Fig.slope = 1', draw graph and output the result of 'ANCOVA with same slope'. \cr  Whereas 'Fig.slope = 0', draw graph and output result of 'linear regression line' for each group.
 #' @param legendPos The position of legend, such as one of c("none","bottomright","bottom","bottomleft","left","topleft","top","topright","right","center").
 #' @param ... additional parameters to \code{\link[graphics]{plot}},such as main, sub, xlab, ylab.
 #'

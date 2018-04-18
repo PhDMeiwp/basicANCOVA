@@ -9,6 +9,12 @@
 	install_github("PhDMeiwp/basicANCOVA@master", force = TRUE)
 	library(basicANCOVA)
 
+## NEWS
+
+**Changes in version 1.0.2**
+
+- add `Fig.slope` argument in `ANCOVAplot()` to draw graph with "same slope" (1, ANCOVA results) \cr or "different slope" (0, linear regression lines of each group).
+
 
 
 ## Usage

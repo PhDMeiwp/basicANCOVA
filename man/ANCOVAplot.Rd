@@ -12,11 +12,11 @@ ANCOVAplot(x, y, groups, data, col = 1:length(levels(factor(groups))),
 \arguments{
 \item{x, y, groups}{For covariate 'x', dependent 'y' and factor 'groups'.}
 
-\item{data}{The dataset contains three columns (x,y,groups) data. See an example via data("isotope",package = "basicANCOVA").}
+\item{data}{The dataset contains three columns (x,y,groups) data. \cr See an example via data("isotope",package = "basicANCOVA").}
 
 \item{col, pch, lty}{The color, pch and linetype for plot.}
 
-\item{Fig.slope}{If 'Fig.slope = 1', draw graph and output the result of 'ANCOVA with same slope'; \n Whereas 'Fig.slope = 0', draw graph and output result of 'linear regression line' for each group.}
+\item{Fig.slope}{If 'Fig.slope = 1', draw graph and output the result of 'ANCOVA with same slope'. \cr  Whereas 'Fig.slope = 0', draw graph and output result of 'linear regression line' for each group.}
 
 \item{legendPos}{The position of legend, such as one of c("none","bottomright","bottom","bottomleft","left","topleft","top","topright","right","center").}
 
