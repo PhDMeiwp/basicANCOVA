@@ -13,7 +13,7 @@
 
 **Changes in version 1.0.2**
 
-- add `Fig.slope` argument in `ANCOVAplot()` to draw graph with "same slope" (1, ANCOVA results) <br> or "different slope" (0, linear regression lines of each group).
+- add `Fig.slope` argument in `ANCOVAplot()` to draw graph with "same slope" (1, ANCOVA results) <br> or "different slopes" (0, linear regression lines of each group).
 
 
 
