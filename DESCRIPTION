@@ -1,9 +1,9 @@
 Package: basicANCOVA
-Title: Basic One-way ANCOVA Judgement and Plot
-Version: 1.0.1
-Author: Weiping Mei [aut, cre], Richard M. Heiberger [aut]
+Title: Basic One-way Analysis of Covariance Judgement and Plot
+Version: 1.0.2
+Author: Weiping Mei [aut, cre], Salvatore S. Mangiafico [aut], Richard M. Heiberger [aut]
 Maintainer: Weiping Mei <meiweipingg@163.com>
-Description: Perform one-way ANCOVA.
+Description: Perform one-way analysis of covariance (ANCOVA) judgement and plot.
 Depends: R (>= 2.10)
 Imports: 
 	graphics,

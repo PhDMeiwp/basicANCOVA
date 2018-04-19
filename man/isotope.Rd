@@ -3,9 +3,9 @@
 \docType{data}
 \name{isotope}
 \alias{isotope}
-\title{Some example data}
+\title{Some Example Data}
 \description{
-A example of isotope dataset.
+An example of isotope dataset.
 }
 \examples{
 data(isotope)

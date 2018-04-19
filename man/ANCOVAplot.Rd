@@ -2,12 +2,12 @@
 % Please edit documentation in R/basicANCOVA.R
 \name{ANCOVAplot}
 \alias{ANCOVAplot}
-\title{One-way ANCOVA Judgement and Plot}
+\title{One-way Analysis of Covariance Judgement and Plot}
 \usage{
 ANCOVAplot(x, y, groups, data, col = 1:length(levels(factor(groups))),
   pch = 1:length(levels(factor(groups))),
-  lty = 1:length(levels(factor(groups))), Fig.slope = 1,
-  legendPos = "topleft", ...)
+  lty = 1:length(levels(factor(groups))), legendPos = "topleft",
+  xlab = NULL, ylab = NULL, ...)
 }
 \arguments{
 \item{x, y, groups}{For covariate 'x', dependent 'y' and factor 'groups'.}
@@ -16,14 +16,17 @@ ANCOVAplot(x, y, groups, data, col = 1:length(levels(factor(groups))),
 
 \item{col, pch, lty}{The color, pch and linetype for plot.}
 
-\item{Fig.slope}{If 'Fig.slope = 1', draw graph and output the result of 'ANCOVA with same slope'. \cr  Whereas 'Fig.slope = 0', draw graph and output result of 'linear regression line' for each group.}
-
 \item{legendPos}{The position of legend, such as one of c("none","bottomright","bottom","bottomleft","left","topleft","top","topright","right","center").}
 
-\item{...}{additional parameters to \code{\link[graphics]{plot}},such as main, sub, xlab, ylab.}
+\item{xlab, ylab}{The labels of x-axis and y-axis.}
+
+\item{...}{additional parameters to \code{\link[graphics]{plot}}, such as main, sub.}
 }
 \description{
-One-way ANCOVA Judgement and Plot
+Judge whether the input data set met the key assumptions for underlie the use of one-way analysis of covariance (ANCOVA). The assumptions include (i) linearity of regression between the dependent variable 'y' and covariate 'x'; (ii) homogeneity of regression slopes among groups (Miller and Chapman, 2001). After judgement, then we continue ANCOVA analysis and plot.
+}
+\details{
+The "Result 2" (Call: aov(formula = y ~ x + group, data = data, contrasts = list(group = contr.sum))) of \code{\link[basicANCOVA]{ANCOVAplot}} function outputs the values of common slope, common intercept and specific intercepts of only n-1 groups (not all groups). \cr Whereas the "Result 3" (Call: aov(formula = y ~ x + group, data = data, contrasts = list(group = contr.treatment))) outputs the values of common slope and specific intercepts of all groups.
 }
 \examples{
 
@@ -31,13 +34,13 @@ library(basicANCOVA)
 data("isotope",package = "basicANCOVA")
 
 # (same slope) output ANCOVA results and graphic
-ANCOVAplot(x=isotope$d13C, y=isotope$d15N, groups=isotope$area, data=isotope, Fig.slope = 1)
+ANCOVAplot(x = isotope$d13C, y = isotope$d15N, groups = isotope$area, data = isotope)
 
-# Not run
-# # (different slopes) output "linear regression" results of each group and graphic
-ANCOVAplot(x=isotope$d13C, y=isotope$d15N, groups=isotope$area, data=isotope, Fig.slope = 0)
-# End (Not run)
+}
+\references{
+The judging criteria is mainly contributed by \cr Gregory A. Miller and Jean P. Chapman. (2001). Misunderstanding analysis of covariance. Journal of Abnormal Psychology, 110(1), 40-48. Doi 10.1037//0021-843x.110.1.40
 
+The interpretations of output results are mainly contributed by \cr Salvatore S. Mangiafico. (2015). An R Companion for the Handbook of BiologicalStatistics, s, version 1.3.2. rcompanion.org/documents/RCompanionBioStatistics.pdf . (Web version: rcompanion.org/rcompanion/ ).
 }
 \seealso{
 \code{\link[basicTrendline]{trendline}}
