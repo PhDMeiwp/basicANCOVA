@@ -18,6 +18,7 @@
        			lty = 1:length(levels(groups)),
        			legendPos = "topleft",
 				xlab = NULL, ylab = NULL, 
+				Fig.slope = 1,
        			...)
 
 
@@ -25,15 +26,10 @@
 	
 
     library(basicANCOVA)
-    data("isotope",package = "basicANCOVA")
-    View(isotope)
-    #rename
-    groups<-isotope$area
-    x<-isotope$d13C
-    y<-isotope$d15N
-    data<-isotope
+    data("hotdog",package = "HH")
+
     
-    ANCOVAplot(x, y, groups, data)   # same slope (ANCOVA results).
+    ANCOVAplot(x=hotdog[,3], y=hotdog[,2], groups=hotdog[,1], data=hotdog)   # same slope (ANCOVA results).
 
  <img src="docs/images/Fig.slope1.png" width="490" align= center/>
 
