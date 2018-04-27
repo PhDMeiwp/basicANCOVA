@@ -1,4 +1,4 @@
-# basicANCOVA: an R package for One-way Analysis of Covariance Judgement and Plot
+# basicANCOVA: an R package for One-Way Analysis of Covariance Judgement and Plot
 
 [![HitCount](http://hits.dwyl.io/PhDMeiwp/basicANCOVA.svg)](http://hits.dwyl.io/PhDMeiwp/basicANCOVA)
 
@@ -26,13 +26,19 @@
 	
 
     library(basicANCOVA)
-    data("hotdog",package = "HH")
+    data("isotope",package = "basicANCOVA")
 
     
-    ANCOVAplot(x=hotdog[,3], y=hotdog[,2], groups=hotdog[,1], data=hotdog)   # same slope (ANCOVA results).
+    ANCOVAplot(x = isotope$d13C, y = isotope$d15N, groups = isotope$area, 
+			   data = isotope, Fig.slope = 1)   # same slope (ANCOVA results, lm(y~x+groups)).
 
  <img src="docs/images/Fig.slope1.png" width="490" align= center/>
+     
+    ANCOVAplot(x = isotope$d13C, y = isotope$d15N, groups = isotope$area, 
+			   data = isotope, Fig.slope = 0)   # different slopes (lm results, lm(y~x*groups)).
 
+ <img src="docs/images/Fig.slope0.png" width="490" align= center/>
+ 
  # Contributors
  
  - Statistical Analysis and Data Display: Heiberger and Holland. See [library(HH)](https://github.com/cran/HH/blob/master/R/ancovaplot.R#subset=(cc==cci)).

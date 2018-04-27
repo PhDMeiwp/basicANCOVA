@@ -25,25 +25,30 @@ ANCOVAplot(x, y, groups, data, col = 1:length(levels(factor(groups))),
 \item{...}{additional parameters to \code{\link[graphics]{plot}},such as main, sub, xlab, ylab.}
 }
 \description{
-One-way ANCOVA Judgement and Plot
+Judge whether the input data set met the key assumptions for underlie the use of one-way analysis of covariance (ANCOVA). The assumptions include (i) linearity of regression between the dependent variable 'y' and covariate 'x'; (ii) homogeneity of regression slopes among groups (Miller and Chapman, 2001). After judgement, then we continue ANCOVA analysis and plot.
 }
 \examples{
 
 library(basicANCOVA)
-data("hotdog",package = "HH")
-View(isotope)
+data("isotope",package = "basicANCOVA")
 
-ANCOVAplot(x=hotdog$Sodium, y=hotdog$Calories, groups=hotdog$Type,
-           data=hotdog, Fig.slope = 1) # (same slope) output ANCOVA results and graphic
+# (same slope) output ANCOVA results and graphic
+ANCOVAplot(x = isotope$d13C, y = isotope$d15N, groups = isotope$area,
+           data = isotope, Fig.slope = 1) # (same slope) output ANCOVA results and graphic
 
 # Not run
-ANCOVAplot(x=hotdog$Sodium, y=hotdog$Calories, groups=hotdog$Type,
-           data=isotope, Fig.slope = 0) # (different slopes) output "linear regression" results of each group and graphic
+ANCOVAplot(x = isotope$d13C, y = isotope$d15N, groups = isotope$area,
+           data = isotope, Fig.slope = 0) # (different slopes) output "linear regression" results of each group and graphic
 # End (Not run)
 
 }
+\references{
+The judging criteria is mainly contributed by \cr Gregory A. Miller and Jean P. Chapman. (2001). Misunderstanding analysis of covariance. Journal of Abnormal Psychology, 110(1), 40-48. Doi 10.1037//0021-843x.110.1.40
+
+The interpretations of output results are mainly contributed by \cr Salvatore S. Mangiafico. (2015). An R Companion for the Handbook of BiologicalStatistics, s, version 1.3.2. rcompanion.org/documents/RCompanionBioStatistics.pdf . (Web version: rcompanion.org/rcompanion/ ).
+}
 \seealso{
-\code{\link[basicTrendline]{trendline}},  \code{\link[ancovaplot]{HH}}
+\code{\link[basicTrendline]{trendline}},  \code{\link[HH]{ancovaplot}}
 }
 \author{
 Weiping Mei

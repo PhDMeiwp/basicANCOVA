@@ -1,18 +1,29 @@
+Changes in version 1.0.4
+------------------------------------------------------------------------------
+* Date: 2018-04-27
+* R version 3.5.0
+* add @References
+* recover data.R function and isotope.rda file, because 'data.table' problem has been solved (for R version 3.5.0)
+
+
 Changes in version 1.0.3
 ------------------------------------------------------------------------------
 * Date: 2018-04-26
+* R version is updated to 3.5.0
 * add default xlab and ylab
 * delete data.R function and isotope.rda file, because there is no package called 'data.table' (for R version 3.5.0)
-* R version is updated to 3.5.0
+
 
 
 Changes in version 1.0.2
 ------------------------------------------------------------------------------
 * Date: 2018-04-18
+* R version 3.4.4
 * add `Fig.slope` argument in `ANCOVAplot()` to draw graph with "same slope" (1, ANCOVA results) or "different slopes" (0, linear regression lines of each group).
 
 
 Changes in version 1.0.1
 ------------------------------------------------------------------------------
 * Date: 2018-04-06
+* R version 3.4.4
 * create this R package named 'basicANCOVA'
