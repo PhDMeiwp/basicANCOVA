@@ -4,16 +4,20 @@
 
 ## Authors
 
+<img src="https://github.com/PhDMeiwp/PhDMeiwp.github.io/blob/hexo/Common_images/Mei_Logo.JPG" width="70"/>
+
 Weiping MEI https://PhDMeiwp.github.io
+
 
 Graduate School of Fisheries and Environmental Sciences, Nagasaki University
 
+
 ## Installation
 
+Get the development version from github:
+	
 	install.packages("devtools")
-	library(devtools)   
-	install_github("PhDMeiwp/basicANCOVA@master", force = TRUE)
-	library(basicANCOVA)
+	devtools::install_github("PhDMeiwp/basicANCOVA@master", force = TRUE)
 
 
 ## Usage
