@@ -1,6 +1,11 @@
-# basicANCOVA: an R package for One-Way Analysis of Covariance Judgement and Plot
+# basicANCOVA: R package of One-Way ANCOVA Judgement and Plot
 
 [![HitCount](http://hits.dwyl.io/PhDMeiwp/basicANCOVA.svg)](http://hits.dwyl.io/PhDMeiwp/basicANCOVA)
+
+## Authors
+
+Weiping MEI https://PhDMeiwp.github.io
+Graduate School of Fisheries and Environmental Sciences, Nagasaki University
 
 ## Installation
 
@@ -28,14 +33,15 @@
     library(basicANCOVA)
     data("isotope",package = "basicANCOVA")
 
-    
+    #(Not run) Same slope (ANCOVA results, lm(y ~ x + groups)).    
     ANCOVAplot(x = isotope$d13C, y = isotope$d15N, groups = isotope$area, 
-			   data = isotope, Fig.slope = 1)   # same slope (ANCOVA results, lm(y~x+groups)).
+			   data = isotope, Fig.slope = 1)
 
  <img src="docs/images/Fig.slope1.png" width="490" align= center/>
-     
+   
+    #(Not run) Different slopes (lm results, lm( y ~ x * groups)).     
     ANCOVAplot(x = isotope$d13C, y = isotope$d15N, groups = isotope$area, 
-			   data = isotope, Fig.slope = 0)   # different slopes (lm results, lm(y~x*groups)).
+			   data = isotope, Fig.slope = 0)
 
  <img src="docs/images/Fig.slope0.png" width="490" align= center/>
  
