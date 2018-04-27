@@ -1,10 +1,11 @@
-# basicANCOVA: R package of One-Way ANCOVA Judgement and Plot
+# basicANCOVA: R Package of One-Way ANCOVA Judgement and Plot
 
 [![HitCount](http://hits.dwyl.io/PhDMeiwp/basicANCOVA.svg)](http://hits.dwyl.io/PhDMeiwp/basicANCOVA)
 
 ## Authors
 
 Weiping MEI https://PhDMeiwp.github.io
+
 Graduate School of Fisheries and Environmental Sciences, Nagasaki University
 
 ## Installation
